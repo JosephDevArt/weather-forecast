@@ -1,0 +1,28 @@
+$tablet-landscape: 1024px;
+$tablet: 814px;
+$phone: 414px;
+$phone-small: 320px;
+
+@mixin tablet-landscape {
+  @media (max-width:#{$tablet-landscape}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width:#{$tablet}) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width:#{$phone}) {
+    @content;
+  }
+}
+
+@mixin phone-small {
+  @media (max-width:#{$phone-small}) {
+    @content;
+  }
+}
