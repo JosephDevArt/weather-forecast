@@ -1,0 +1,19 @@
+.cont {
+  @include phone {
+    height: 140px;
+    @include hide-scrollbar;
+    width: 100vw;
+  }
+}
+.time-line {
+  background-color: white;
+  position: relative;
+  height: 2px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  @include phone {
+    width: 780px;
+    margin-top: 4.4rem;
+  }
+}

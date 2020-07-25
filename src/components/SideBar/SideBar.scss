@@ -1,0 +1,55 @@
+.side-bar {
+  grid-area: side-bar;
+  background-color: white;
+  border-bottom-right-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  @include tablet {
+    flex-direction: row;
+    border-bottom-left-radius: 16px;
+  }
+  @include phone {
+    border-radius: 0;
+  }
+  .weather-details,
+  .next-days-forecast {
+    width: 80%;
+    margin: 1rem auto;
+  }
+  .next-days-forecast {
+    @include tablet {
+      border-left: 1px solid black;
+    }
+  }
+
+  h4 {
+    color: rgb(45, 45, 45);
+    padding: 0.6rem 0;
+    @include tablet {
+      text-align: center;
+    }
+  }
+  ul {
+    @include tablet {
+      width: 60%;
+      margin: 0 auto;
+    }
+    @include phone {
+      width: 80%;
+    }
+    li {
+      color: #8a8a8a;
+      padding: 0.4rem 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      @include phone-small {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

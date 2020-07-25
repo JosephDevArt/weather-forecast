@@ -1,0 +1,51 @@
+form {
+  margin: 2.6rem auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+
+  p {
+    position: absolute;
+    top: 3.2rem;
+    color: #ff8c00;
+  }
+  input {
+    background: none;
+    color: white;
+    padding: 0.2rem 0.4rem;
+    font-size: 1.3rem;
+    outline: none;
+    width: 40%;
+    height: 2rem;
+    border: none;
+    border-bottom: 2px solid white;
+    &::placeholder {
+      color: white;
+      font-size: 1.2rem;
+    }
+    @include phone {
+      width: 60%;
+      border-width: 1px;
+    }
+  }
+  button {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    border: 2px solid white;
+    background: none;
+    padding: 0.6rem 0.8rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    outline-color: black;
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+    @include phone {
+      font-size: 1rem;
+      border-width: 1px;
+    }
+  }
+}
