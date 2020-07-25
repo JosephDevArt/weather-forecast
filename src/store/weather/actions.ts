@@ -21,7 +21,6 @@ export const getWeather = (city: string): AppThunk<Promise<number[]>> => async (
   dispatch,
   getState
 ) => {
-  console.log(document.documentElement.clientHeight);
   const isChecked = getState().units.isChecked; //make and api call with fahrenheit if isChecked==true and with celsius if isChecked==false
   const errorMessage = getState().app.errorMessage;
   const api_key = process.env.REACT_APP_WEATHER_API_KEY;
