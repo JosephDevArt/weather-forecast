@@ -21,14 +21,18 @@ const App: FC<any> = () => {
     dispatch(initializeApp());
   }, []);
 
-  return (
-    <main className="App">
-      <LoadingSpinner isFetching={isFetching} />
-      <MainInfo />
-      <UnitsSwitcher />
-      <SideBar />
-    </main>
-  );
+  if (isInitialized) {
+    return (
+      <main className="App">
+        <LoadingSpinner isFetching={isFetching} />
+        <MainInfo />
+        <UnitsSwitcher />
+        <SideBar />
+      </main>
+    );
+  } else {
+    return <LoadingSpinner isFetching={isFetching} />;
+  }
 };
 
 export default App;
