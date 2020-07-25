@@ -18,3 +18,7 @@ export const setErrorMessage = (error: string): AppActionTypes => ({
   type: SET_ERROR_MESSAGE,
   error,
 });
+
+export const initializeApp = () => async (dispatch: any) => {
+  console.log("initialized");
+};

@@ -1,9 +1,11 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import appReducer from "./app/reducers";
+import switcherReducer from "./switcher/reducers";
 
 export const rootReducer = combineReducers({
   app: appReducer,
+  units: switcherReducer,
 });
 
 export const store = createStore(

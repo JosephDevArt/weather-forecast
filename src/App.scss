@@ -1,0 +1,42 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  @include hide-scrollbar;
+  overflow: hidden;
+}
+#root {
+  width: 100vw;
+  height: 100vh;
+  background: url("./assets/view-of-city.jpg") center center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  @include hide-scrollbar;
+  @include main-demensions();
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  grid-template-columns: 4fr minmax(240px, 1fr);
+  grid-template-rows: 1fr 8fr;
+  grid-template-areas:
+    "main-info temp-units"
+    "main-info side-bar";
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 4fr 120px 2fr;
+    grid-template-areas:
+      "main-info main-info main-info"
+      ". temp-units ."
+      "side-bar side-bar side-bar";
+  }
+  @include phone {
+    grid-template-rows: 4fr 60px 2fr;
+  }
+}

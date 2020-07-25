@@ -1,6 +1,7 @@
 export const SET_IS_INITIALISED = "SET_IS_INITIALIZED";
 export const SET_IS_FETCHING = "SET_IS_FETCHING";
 export const SET_ERROR_MESSAGE = "SET_ERROR_MESSAGE";
+
 export type AppState = {
   isInitialized: boolean;
   isFetching: boolean;
