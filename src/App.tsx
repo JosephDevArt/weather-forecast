@@ -8,12 +8,16 @@ import { initializeApp } from "./store/app/actions";
 import MainInfo from "./components/MainInfo/MainInfo";
 import UnitsSwitcher from "./components/UnitsSwitcher/UnitsSwitcher";
 import SideBar from "./components/SideBar/SideBar";
+import Form from "./components/MainInfo/Form/Form";
 
 const App: FC<any> = () => {
-  const { isInitialized, isFetching } = useSelector((state: any) => ({
-    isInitialized: state.app.isInitialized,
-    isFetching: state.app.isFetching,
-  }));
+  const { isInitialized, isFetching, isGeoProvided } = useSelector(
+    (state: any) => ({
+      isInitialized: state.app.isInitialized,
+      isFetching: state.app.isFetching,
+      isGeoProvided: state.app.isGeoProvided,
+    })
+  );
 
   const dispatch = useDispatch();
 
@@ -21,17 +25,21 @@ const App: FC<any> = () => {
     dispatch(initializeApp());
   }, []);
 
-  if (isInitialized) {
-    return (
-      <main className="App">
-        <LoadingSpinner isFetching={isFetching} />
-        <MainInfo />
-        <UnitsSwitcher />
-        <SideBar />
-      </main>
-    );
+  if (isGeoProvided) {
+    if (isInitialized) {
+      return (
+        <main className="App">
+          <LoadingSpinner isFetching={isFetching} />
+          <MainInfo />
+          <UnitsSwitcher />
+          <SideBar />
+        </main>
+      );
+    } else {
+      return <LoadingSpinner isFetching={isFetching} />;
+    }
   } else {
-    return <LoadingSpinner isFetching={isFetching} />;
+    return <Form />;
   }
 };
 

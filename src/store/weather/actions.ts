@@ -5,7 +5,11 @@ import {
 } from "./types";
 
 import { AppThunk } from "../rootTypes";
-import { setIsFetching } from "../app/actions";
+import {
+  setIsFetching,
+  setIsGeolocationProvided,
+  setIsInitialized,
+} from "../app/actions";
 import { setErrorMessage } from "./../app/actions";
 import { batch } from "react-redux";
 
@@ -17,19 +21,35 @@ export const loadWeatherSuccess = (
   payload,
 });
 
-export const getWeather = (city: string): AppThunk<Promise<number[]>> => async (
+export const getWeather = (...args: any): AppThunk<any> => async (
   dispatch,
   getState
 ) => {
   const isChecked = getState().units.isChecked; //make and api call with fahrenheit if isChecked==true and with celsius if isChecked==false
   const errorMessage = getState().app.errorMessage;
+  const isGeoProvided = getState().app.isGeoProvided;
   const api_key = process.env.REACT_APP_WEATHER_API_KEY;
+
   dispatch(setIsFetching(true));
-  const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api_key}&units=${
-      isChecked ? "imperial" : "metric"
-    }`
-  );
+
+  let response: any;
+
+  if (args.length == 1) {
+    var city = args[0];
+    response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api_key}&units=${
+        isChecked ? "imperial" : "metric"
+      }`
+    );
+  } else {
+    const lat = args[0];
+    const lon = args[1];
+    response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}&units=${
+        isChecked ? "imperial" : "metric"
+      }`
+    );
+  }
   if (response.ok) {
     var data = await response.json();
     const payload: WeatherPayload = {
@@ -37,6 +57,7 @@ export const getWeather = (city: string): AppThunk<Promise<number[]>> => async (
       weather: data.list,
     };
     batch(() => {
+      !isGeoProvided && dispatch(setIsGeolocationProvided(true));
       dispatch(loadWeatherSuccess(payload));
       dispatch(setIsFetching(false));
       errorMessage && dispatch(setErrorMessage(""));
@@ -46,7 +67,6 @@ export const getWeather = (city: string): AppThunk<Promise<number[]>> => async (
       dispatch(setIsFetching(false));
       dispatch(setErrorMessage(response.statusText));
     });
-
     throw Error;
   }
 

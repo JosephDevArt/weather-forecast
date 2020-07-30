@@ -18,9 +18,10 @@ const timeReducer = (
 ): TimeState => {
   switch (action.type) {
     case LOAD_TIME_SUCCESS: {
-      const day = new Date(action.time);
+      const day = new Date(action.time.replace(/ /g, "T")); //replace function makes it work in safari browser
       const dateArray = day.toDateString().split(" ");
       const time = action.time.slice(11, 16); //extract hh:mm only
+
       return {
         ...state,
         day: dateArray[0],

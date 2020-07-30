@@ -1,6 +1,7 @@
 export const convertMilisecToTime = (milisec) => {
   //conver milisec to hh:mm format
   const day = new Date(milisec * 1000);
+  console.log(day);
   if (day.getMinutes().toString().length != 2) {
     return day.getHours() + ":0" + day.getMinutes();
   } else {

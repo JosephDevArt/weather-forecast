@@ -4,12 +4,14 @@ import {
   AppState,
   SET_IS_FETCHING,
   SET_ERROR_MESSAGE,
+  SET_IS_GEOLOCATION_PROVIDED,
 } from "./types";
 
 const initialState: AppState = {
   isInitialized: false,
   isFetching: false,
   errorMessage: "",
+  isGeoProvided: false,
 };
 
 const appReducer = (state = initialState, action: AppActionTypes): AppState => {
@@ -29,6 +31,12 @@ const appReducer = (state = initialState, action: AppActionTypes): AppState => {
       return {
         ...state,
         errorMessage: action.error,
+      };
+
+    case SET_IS_GEOLOCATION_PROVIDED:
+      return {
+        ...state,
+        isGeoProvided: action.payload,
       };
     default:
       return state;

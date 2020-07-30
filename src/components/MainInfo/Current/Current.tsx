@@ -38,7 +38,7 @@ const Current: FC<any> = () => {
       <p>
         {time} {day}, {date} {month} {year}
       </p>
-      <img src={`http://openweathermap.org/img/wn/${icon}@4x.png`} alt="" />
+      <img src={`https://openweathermap.org/img/wn/${icon}@4x.png`} alt="" />
       <h2>{description}</h2>
       <h3>
         {temp} <span> {isChecked ? "℉" : "℃"}</span>
