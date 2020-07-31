@@ -1,11 +1,10 @@
 export const convertMilisecToTime = (milisec) => {
   //conver milisec to hh:mm format
   const day = new Date(milisec * 1000);
-  console.log(day);
   if (day.getMinutes().toString().length != 2) {
-    return day.getHours() + ":0" + day.getMinutes();
+    return day.getUTCHours() + 3 + ":0" + day.getMinutes(); //+3 so it will be +0300 GMT
   } else {
-    return day.getHours() + ":" + day.getMinutes();
+    return day.getUTCHours() + 3 + ":" + day.getMinutes(); //+3 so it will be +0300 GMT
   }
 };
 
