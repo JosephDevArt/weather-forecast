@@ -9,10 +9,13 @@ const Form: FC<any> = () => {
 
   const dispatch = useDispatch();
 
-  const { isFetching, errorMessage } = useSelector((state: RootState) => ({
-    isFetching: state.app.isFetching,
-    errorMessage: state.app.errorMessage,
-  }));
+  const { isFetching, errorMessage, isGeoProvided } = useSelector(
+    (state: RootState) => ({
+      isFetching: state.app.isFetching,
+      errorMessage: state.app.errorMessage,
+      isGeoProvided: state.app.isGeoProvided,
+    })
+  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -23,7 +26,11 @@ const Form: FC<any> = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} action="">
+    <form
+      className={isGeoProvided ? "" : "geo-not-provided"}
+      onSubmit={handleSubmit}
+      action=""
+    >
       <input ref={input} type="text" placeholder="city" />
       <p>{errorMessage}</p>
       <button disabled={isFetching} type="submit">

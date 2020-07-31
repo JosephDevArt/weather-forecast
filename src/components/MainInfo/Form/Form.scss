@@ -20,12 +20,14 @@ form {
     height: 2rem;
     border: none;
     border-bottom: 2px solid white;
+    text-shadow: $text-shadow;
     &::placeholder {
       color: white;
+      text-shadow: $text-shadow;
       font-size: 1.2rem;
     }
     @include phone {
-      width: 60%;
+      width: 60% !important;
       border-width: 1px;
     }
   }
@@ -39,6 +41,7 @@ form {
     cursor: pointer;
     transition: 0.2s;
     outline-color: black;
+    text-shadow: $text-shadow;
     &:hover {
       background-color: white;
       color: black;
@@ -47,5 +50,21 @@ form {
       font-size: 1rem;
       border-width: 1px;
     }
+  }
+}
+
+.geo-not-provided {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem 0;
+  border-radius: 16px;
+  width: 50%;
+  @include tablet-landscape {
+    width: 70%;
+  }
+  @include tablet {
+    width: 85%;
+  }
+  @include phone {
+    width: unset;
   }
 }
