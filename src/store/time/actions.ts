@@ -1,8 +1,9 @@
+import { batch } from "react-redux";
+
 import { TimeActionTypes, LOAD_TIME_SUCCESS } from "./types";
 
 import { AppThunk } from "../rootTypes";
 import { setIsFetching, setIsInitialized } from "../app/actions";
-import { batch } from "react-redux";
 
 export const loadTimeSuccess = (time: string): TimeActionTypes => ({
   type: LOAD_TIME_SUCCESS,

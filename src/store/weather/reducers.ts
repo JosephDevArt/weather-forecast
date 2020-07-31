@@ -2,6 +2,7 @@ import {
   createNextDaysWeather,
   createTimeLineWeather,
 } from "./../helperFunctions";
+
 import {
   WeatherState,
   LOAD_WEATHER_SUCCESS,

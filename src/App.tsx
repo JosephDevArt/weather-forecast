@@ -4,15 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import "./index.scss";
 
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
-import { initializeApp } from "./store/app/actions";
 import MainInfo from "./components/MainInfo/MainInfo";
 import UnitsSwitcher from "./components/UnitsSwitcher/UnitsSwitcher";
 import SideBar from "./components/SideBar/SideBar";
 import Form from "./components/MainInfo/Form/Form";
 
+import { initializeApp } from "./store/app/actions";
+
+import { RootState } from "./store/rootTypes";
+
 const App: FC<any> = () => {
   const { isInitialized, isFetching, isGeoProvided } = useSelector(
-    (state: any) => ({
+    (state: RootState) => ({
       isInitialized: state.app.isInitialized,
       isFetching: state.app.isFetching,
       isGeoProvided: state.app.isGeoProvided,

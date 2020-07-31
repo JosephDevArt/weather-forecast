@@ -1,6 +1,8 @@
-import { AppActionTypes } from "./app/types";
-import { rootReducer } from "./configureStore";
 import { ThunkAction } from "redux-thunk";
+
+import { rootReducer } from "./configureStore";
+
+import { AppActionTypes } from "./app/types";
 import { SwitcherActionTypes } from "./switcher/types";
 import { WeatherActionTypes } from "./weather/types";
 import { TimeActionTypes } from "./time/types";

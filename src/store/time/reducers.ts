@@ -1,5 +1,6 @@
 import { TimeState, LOAD_TIME_SUCCESS, TimeActionTypes } from "./types";
 import { LOAD_WEATHER_SUCCESS, WeatherActionTypes } from "./../weather/types";
+
 import { convertMilisecToTime } from "./../helperFunctions";
 
 const initialState: TimeState = {

@@ -1,6 +1,4 @@
-export const LOAD_TIME_STARTED = "LOAD_TIME_STARTED";
 export const LOAD_TIME_SUCCESS = "LOAD_TIME_SUCCESS";
-export const LOAD_TIME_FAILURE = "LOAD_TIME_FAILURE";
 
 export type TimeState = {
   day: string;

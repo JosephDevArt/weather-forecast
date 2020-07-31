@@ -1,3 +1,5 @@
+import { batch } from "react-redux";
+
 import {
   WeatherActionTypes,
   LOAD_WEATHER_SUCCESS,
@@ -5,13 +7,10 @@ import {
 } from "./types";
 
 import { AppThunk } from "../rootTypes";
-import {
-  setIsFetching,
-  setIsGeolocationProvided,
-  setIsInitialized,
-} from "../app/actions";
+
+import { setIsFetching, setIsGeolocationProvided } from "../app/actions";
+
 import { setErrorMessage } from "./../app/actions";
-import { batch } from "react-redux";
 
 //loadWeatherSuccess action is being listened by 3 reduers (weatherRed,timeRed,locationRed)
 export const loadWeatherSuccess = (

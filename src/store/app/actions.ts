@@ -41,6 +41,7 @@ export const initializeApp = (): AppThunk<void> => async (dispatch) => {
   navigator.geolocation.getCurrentPosition(
     function (position) {
       dispatch(setIsGeolocationProvided(true));
+
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
 
