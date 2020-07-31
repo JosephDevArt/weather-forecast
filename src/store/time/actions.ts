@@ -2,6 +2,7 @@ import { TimeActionTypes, LOAD_TIME_SUCCESS } from "./types";
 
 import { AppThunk } from "../rootTypes";
 import { setIsFetching, setIsInitialized } from "../app/actions";
+import { batch } from "react-redux";
 
 export const loadTimeSuccess = (time: string): TimeActionTypes => ({
   type: LOAD_TIME_SUCCESS,
@@ -14,15 +15,18 @@ export const getTime = (lat: number, lng: number): AppThunk<void> => async (
 ) => {
   const isInitialized = getState().app.isInitialized;
 
-  dispatch(setIsFetching(true));
   const api_key = process.env.REACT_APP_TIME_API_KEY;
+
+  dispatch(setIsFetching(true));
+
   const response = await fetch(
     `https://api.timezonedb.com/v2.1/get-time-zone?key=${api_key}&format=json&by=position&lat=${lat}&lng=${lng}`
   );
+
   const data = await response.json();
-
-  dispatch(loadTimeSuccess(data.formatted));
-  dispatch(setIsFetching(false));
-
-  !isInitialized && dispatch(setIsInitialized(true));
+  batch(() => {
+    dispatch(loadTimeSuccess(data.formatted));
+    dispatch(setIsFetching(false));
+    !isInitialized && dispatch(setIsInitialized(true));
+  });
 };
