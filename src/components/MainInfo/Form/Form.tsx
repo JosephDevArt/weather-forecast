@@ -21,6 +21,7 @@ const Form: FC<any> = () => {
     e.preventDefault();
 
     const node = input.current;
+    node?.blur();
 
     dispatch(getWeatherAndTime(node?.value as string));
   };
