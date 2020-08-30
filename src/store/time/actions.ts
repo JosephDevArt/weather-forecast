@@ -25,6 +25,7 @@ export const getTime = (lat: number, lng: number): AppThunk<void> => async (
   );
 
   const data = await response.json();
+  console.log(data);
   batch(() => {
     dispatch(loadTimeSuccess(data.formatted));
     dispatch(setIsFetching(false));

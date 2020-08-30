@@ -9,6 +9,7 @@ body {
   @include tablet-landscape {
     user-select: none;
   }
+  overflow: hidden;
 }
 #root {
   width: 100vw;
